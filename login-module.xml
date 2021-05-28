@@ -1,0 +1,51 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="login-module" parallel="tests">
+    <test name="Positive Login1">
+        <parameter name="username" value="demo"/>
+        <parameter name="password" value="1234"/>
+        <parameter name="errorMessage" value=""></parameter>
+        <classes>
+            <class name="com.loginModule.LoginTest">
+                <methods>
+                    <include name="loginPositive"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Negative login - empty username1">
+        <parameter name="username" value=""/>
+        <parameter name="password" value="1234"/>
+        <parameter name="errorMessage" value="This field is required"></parameter>
+        <classes>
+            <class name="com.loginModule.LoginTest">
+                <methods>
+                    <include name="loginEmptyUsername"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Negative login - empty password1">
+        <parameter name="username" value="demo"/>
+        <parameter name="password" value=""/>
+        <parameter name="errorMessage" value="This field is required"></parameter>
+        <classes>
+            <class name="com.loginModule.LoginTest">
+                <methods>
+                    <include name="loginEmptyPassword"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Negative login - username/password does not match1">
+        <parameter name="username" value="demo"/>
+        <parameter name="password" value="12345"/>
+        <parameter name="errorMessage" value="The given name / password are incorrect. Please, try again."></parameter>
+        <classes>
+            <class name="com.loginModule.LoginTest">
+                <methods>
+                    <include name="loginUsernamePasswordNoMatch"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
